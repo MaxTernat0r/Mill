@@ -21,6 +21,7 @@ window = pg.display.set_mode((window_width, window_height))
 run = True
 
 bg = obx('assets/bg.jpg', 0, 0, 1920, 1080)
+sun = obx('assets/sun.png', 1275, 300, 300, 300)
 # 1 МЕЛЬНИЦА
 house = obx('assets\МельницаДом.png', 100, 590, 500, 500)
 wood = obx('assets\wood.png', 360, 740, 75, 75)
@@ -149,6 +150,8 @@ while run:
     knife16_rotate = pg.transform.rotate(knife4.pic, angle * 57 + 270)
     #knife5_rotate = pg.transform.rotate(knife5.pic, -angle * 57 + 45)
 
+    sun_rotate = pg.transform.rotate(sun.pic, angle * 57)
+
     window.blit(bg.pic, [bg.x, bg.y])
     window.blit(house.pic, [house.x, house.y])
     window.blit(house2.pic, [house2.x, house2.y])
@@ -179,6 +182,8 @@ while run:
     window.blit(wood2_rotate, wood2_rotate.get_rect(center=(wood2.rec.x, wood2.rec.y)))
     window.blit(wood3_rotate, wood3_rotate.get_rect(center=(wood3.rec.x, wood3.rec.y)))
     window.blit(wood4_rotate, wood4_rotate.get_rect(center=(wood4.rec.x, wood4.rec.y)))
+
+    window.blit(sun_rotate, sun_rotate.get_rect(center=(sun.rec.x, sun.rec.y)))
     #window.blit(knife5_rotate, knife5_rotate.get_rect(center=(knife5.rec.x, knife5.rec.y)))
 
     pg.display.flip()

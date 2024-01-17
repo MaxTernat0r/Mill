@@ -10,7 +10,7 @@ class obx:
         self.rec = pg.Rect(x, y, x_r, y_r)
         self.x = x
         self.y = y
-
+        self.rect = pg.Rect(x, y, x_r, y_r)
 
 pg.init()
 
@@ -54,16 +54,92 @@ knife13 = obx('assets\МельницаЛопости2.png', 1560, 740, 200, 100)
 knife14 = obx('assets\МельницаЛопости2.png', 1560, 740, 200, 100)
 knife15 = obx('assets\МельницаЛопости2.png', 1560, 740, 200, 100)
 knife16 = obx('assets\МельницаЛопости2.png', 1560, 740, 200, 100)
+
+ball1 = obx('ball.png', 1240, 280, 50, 50)
+ball2 = obx('ball.png', 1240, 280, 50, 50)
+ball3 = obx('ball.png', 1240, 280, 50, 50)
+ball4 = obx('ball.png', 1240, 280, 50, 50)
+ball5 = obx('ball.png', 1240, 280, 50, 50)
+ball6 = obx('ball.png', 1240, 280, 50, 50)
+ball7 = obx('ball.png', 1240, 280, 50, 50)
+ball8 = obx('ball.png', 1240, 280, 50, 50)
+
+pg.mixer.music.load("assets/music.mp3")
+pg.mixer.music.play(-1)
 al = 0
 al2 = 0
-
+step = 50
+ballall = []
+cnt = 0
 while run:
     for event in pg.event.get():
         if event.type == pg.QUIT:
             run = False
-
+        # elif event.type == pg.MOUSEBUTTONDOWN:
+        #     ballall.append(obx('assets/ball.png',0,0,50,50))
+        #     ballall[-1].rect.x = sun.x + vX * step
+        #     ballall[-1].rect.y = sun.y + vY * step
+        #     if ballall[-1].y < 200:
+        #         ballall[-1].x=sun.x+vX * step
+        #         ballall[-1].y=sun.y+vY * step
+        #     ballall[-1].vX=vX
+        #     ballall[-1].vY=vY
+        #     ballall[-1].rotate = pg.transform.rotate(ballall[-1].pic, -angle2 * 57)
     al+=.1
     al2 -= .1
+    al3 = 1
+    cnt += 1
+    # for i in range(len(ballall)):
+    #     ballall[i].y += 50
+    #     al3+=1
+    #     ballall[i].rec.x = ballall[i].x + 25 + 100*cos(-al3/57)
+    #     ballall[i].rec.y = ballall[i].y + 25 + 100*sin(-al3/57)
+    #     vY = 0.1*sin(-al/57)
+    #     angle2 = atan2(vY2,vX2)
+    #     gun2_rotate = pg.transform.rotate(ballall[i].pic,-angle2 * 57)
+    if cnt % 100 == 0:
+        ball1.x = 1240
+        ball1.y = 280
+
+        ball2.x = 1240
+        ball2.y = 280
+
+        ball3.x = 1240
+        ball3.y = 280
+
+        ball4.x = 1240
+        ball4.y = 280
+
+        ball5.x = 1240
+        ball5.y = 280
+
+        ball6.x = 1240
+        ball6.y = 280
+
+        ball7.x = 1240
+        ball7.y = 280
+
+        ball8.x = 1240
+        ball8.y = 280
+
+    ball1.x += 20
+    ball2.y += 20
+    ball3.x -= 20
+    ball4.y -= 20
+    ball5.x += 20
+    ball5.y += 20
+    ball6.x -= 20
+    ball6.y -= 20
+    ball7.x -= 20
+    ball7.y += 20
+    ball8.x += 20
+    ball8.y -= 20
+
+
+    vX2 = 240 - sun.x
+    vY2 = 50 - sun.y
+    angle2 = atan2(vY2, vX2)
+
     knife1.rec.x = knife1.x + 3 + 100 * cos(-al / 57)
     knife1.rec.y = knife1.y + 100 * sin(-al / 57)
 
@@ -185,6 +261,14 @@ while run:
 
     window.blit(sun_rotate, sun_rotate.get_rect(center=(sun.rec.x, sun.rec.y)))
     #window.blit(knife5_rotate, knife5_rotate.get_rect(center=(knife5.rec.x, knife5.rec.y)))
+    window.blit(ball1.pic, [ball1.x, ball1.y])
+    window.blit(ball2.pic, [ball2.x, ball2.y])
+    window.blit(ball3.pic, [ball3.x, ball3.y])
+    window.blit(ball4.pic, [ball4.x, ball4.y])
+    window.blit(ball5.pic, [ball5.x, ball5.y])
+    window.blit(ball6.pic, [ball6.x, ball6.y])
+    window.blit(ball7.pic, [ball7.x, ball7.y])
+    window.blit(ball8.pic, [ball8.x, ball8.y])
 
     pg.display.flip()
 
